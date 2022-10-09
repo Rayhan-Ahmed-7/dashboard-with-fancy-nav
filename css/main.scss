@@ -1,0 +1,97 @@
+@import './variables';
+@import './mixins';
+@import './animation';
+
+html{
+    font-size: 16px;
+}
+
+body{
+    background-color: white;
+    font-family:$main-font;
+}
+
+.wrapper{
+    display: flex;
+    .side-nav{
+        width:110px ;
+        border-right:2px solid $lighter-gray;
+
+        .logo{
+            margin-bottom:3em;
+            padding:2em 0;   
+
+            img{
+                height:4em;
+                margin:0 auto;
+            }
+        }
+
+        .menu{
+            position:relative;
+            .stroke{
+                height:1.7em;
+                width:3px;
+                border-radius: 6px;
+                background-color:$dark-blue;
+                position:absolute;
+                right:0;
+                overflow: hidden;
+                transition:all .5s cubic-bezier(0.58,-0.27, 0.33, 1.31);
+                .half{
+                    display:block;
+                    height:50%;
+                    width:inherit;
+                    background-color: $normal-green;
+                    position:absolute;
+                    bottom:0;
+                }
+            }
+            ul{
+                li{
+                    margin-bottom:3em;
+                    a{
+                        display:block;
+                        position:relative;
+                        img{
+                            height:1.7em;
+                            margin:0 auto;
+                            filter:grayscale(1)
+                        }
+                        .stroke{
+                            height:1.7em;
+                            width:3px;
+                            border-radius: 6px;
+                            background-color:$dark-blue;
+                            position:absolute;
+                            right:0;
+                            top:0;
+                            overflow: hidden;
+                            display:none;
+
+                            .half{
+                                display:block;
+                                height:50%;
+                                width:inherit;
+                                background-color: $normal-green;
+                                position:absolute;
+                                bottom:0;
+                            }
+                        }
+                    }
+                    &.active{
+                        a{
+                            img{
+                                filter: grayscale(0);
+                            }
+                            .stroke{
+                                // display:block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

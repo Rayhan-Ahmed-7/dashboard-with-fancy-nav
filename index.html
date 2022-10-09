@@ -1,13 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productivity Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kumbh+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/tailwind.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
-<body>
-    
+<!-- Structure starts here -->
 
+<body>
+    <div class="wrapper">
+        <div class="side-nav">
+            <div class="logo">
+                <img src="/assets/logo.png" alt="">
+            </div>
+            <nav class="menu">
+                <span class="stroke">
+                    <span class="half"></span>
+                </span>
+                <ul>
+                    <li class="active">
+                        <a href="#">
+                            <img src="/assets/chart.png" alt="">
+                            <span class="stroke">
+                                <span class="half"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="assets/calendar.png" alt="">
+                            <span class="stroke">
+                                <span class="half"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="assets/folder.png" alt="">
+                            <span class="stroke">
+                                <span class="half"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"><img src="assets/docket.png" alt="">
+                            <span class="stroke">
+                                <span class="half"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="assets/chat.png" alt="">
+                            <span class="stroke">
+                                <span class="half"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="assets/dougnut.png" alt="">
+                            <span class="stroke">
+                                <span class="half"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="assets/settings.png" alt="">
+                            <span class="stroke">
+                                <span class="half"></span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+
+        </div>
+    </div>
+
+    <script>
+        const listItems = document.querySelectorAll('.menu ul li');
+        const indicator = document.querySelector('.stroke');
+        let privious ;
+        listItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                listItems.forEach(i => {
+                    if (i.classList.contains('active')) {
+                        privious = i.offsetTop;
+                        i.classList.remove('active');
+                    }
+                })
+                
+                indicator.style.transformOrigin = "bottom";
+                indicator.style.height = `${Math.abs(item.offsetTop-privious+item.clientHeight)}px`;
+                item.classList.add('active');
+                //indicator.style.transformOrigin = "center";
+                
+                indicator.addEventListener('transitionend',()=>{
+                    indicator.style.height = "1.7em";
+                    indicator.style.transform = `translate(0px,${item.offsetTop}px)`;
+                    // indicator.style.top = `${item.offsetTop}px`;
+                })
+            })
+        })
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,10 @@
+@keyframes indicator {
+    0%{
+        transform-origin: top;
+        transform:scaleY(.5)
+    }
+    100%{
+        transform-origin: bottom;
+        transform:scaleY(1)
+    }
+}
